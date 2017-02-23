@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/' => 'users#index'
 
-  get 'view/:id'
+  get 'view/:id' => 'users#view'
 
   post 'register' => 'users#register'
 
