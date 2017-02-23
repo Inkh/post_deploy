@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :check_status, except: [:index, :register, :log]
+
   def index
   end
 
@@ -16,5 +19,13 @@ class UsersController < ApplicationController
     else
       flash[:errors] = user.errors.full_messages.to_sentence
       redirect_to ("/")
+    end
   end
+
+  def check_status
+    if !session[:user_id]
+      redirect_to ('/')
+    end
+  end
+
 end
